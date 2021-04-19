@@ -1,4 +1,4 @@
-package br.com.zupacademy.laismukai.casadocodigo.modelo;
+package br.com.zupacademy.laismukai.casadocodigo.criaAutor;
 
 import java.time.LocalDateTime;
 
@@ -22,6 +22,11 @@ public class Autor {
 	@NotBlank
 	private String descricao;
 	private LocalDateTime dataCriacao = LocalDateTime.now();
+	
+	@Override
+	public String toString() {
+		return "Autor: " + this.nome + " email: " + this.email + " descrição: "+  this.descricao;
+	}
 
 	public Autor(String nome, String email, String descricao) {
 		this.nome = nome;

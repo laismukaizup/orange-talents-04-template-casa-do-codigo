@@ -1,9 +1,7 @@
-package br.com.zupacademy.laismukai.casadocodigo.dto;
+package br.com.zupacademy.laismukai.casadocodigo.criaAutor;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-
-import br.com.zupacademy.laismukai.casadocodigo.modelo.Autor;
 
 public class AutorRequest {
 	@NotBlank
