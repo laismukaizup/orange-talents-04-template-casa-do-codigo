@@ -22,15 +22,15 @@ public class Autor {
 	@NotBlank
 	private String descricao;
 	private LocalDateTime dataCriacao = LocalDateTime.now();
-	
+
 	@Override
 	public String toString() {
-		return "Autor: " + this.nome + " email: " + this.email + " descrição: "+  this.descricao;
+		return "Autor: " + this.nome + " email: " + this.email + " descrição: " + this.descricao;
 	}
-	
+
 	@Deprecated
 	public Autor() {
-		
+
 	}
 
 	public Autor(String nome, String email, String descricao) {
