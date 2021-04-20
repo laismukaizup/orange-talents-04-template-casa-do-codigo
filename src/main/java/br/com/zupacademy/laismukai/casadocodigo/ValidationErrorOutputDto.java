@@ -1,4 +1,4 @@
-package br.com.zupacademy.laismukai.casadocodigo.criaAutor;
+package br.com.zupacademy.laismukai.casadocodigo;
 
 public class ValidationErrorOutputDto {
 

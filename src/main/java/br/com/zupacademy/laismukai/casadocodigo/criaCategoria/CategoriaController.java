@@ -1,4 +1,4 @@
-package br.com.zupacademy.laismukai.casadocodigo.criaAutor;
+package br.com.zupacademy.laismukai.casadocodigo.criaCategoria;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -11,17 +11,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/autor")
-public class AutorController {
+@RequestMapping("/categoria")
+public class CategoriaController {
 
 	@PersistenceContext
 	EntityManager manager;
 
 	@PostMapping
 	@Transactional
-	public String cadastrar(@RequestBody @Valid AutorRequest request) {
-		Autor autor = request.converter();
-		manager.persist(autor);
-		return autor.toString();
+	public String cadastrar(@RequestBody @Valid CategoriaRequest request) {
+		Categoria categoria = request.converter();
+		manager.persist(categoria);
+		return categoria.toString();
+
 	}
+
 }

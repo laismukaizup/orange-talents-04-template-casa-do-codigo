@@ -3,11 +3,14 @@ package br.com.zupacademy.laismukai.casadocodigo.criaAutor;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
+import br.com.zupacademy.laismukai.casadocodigo.UniqueValue;
+
 public class AutorRequest {
 	@NotBlank
 	private String nome;
 	@NotBlank
 	@Email
+	@UniqueValue(domainClass = Autor.class, fieldName = "email", message = "E-mail já existe.")
 	private String email;
 	@NotBlank
 	private String descricao;

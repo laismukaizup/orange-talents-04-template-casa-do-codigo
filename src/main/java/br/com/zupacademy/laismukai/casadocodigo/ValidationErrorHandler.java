@@ -1,4 +1,4 @@
-package br.com.zupacademy.laismukai.casadocodigo.criaAutor;
+package br.com.zupacademy.laismukai.casadocodigo;
 
 import java.util.ArrayList;
 import java.util.List;
