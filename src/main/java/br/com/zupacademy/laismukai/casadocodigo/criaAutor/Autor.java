@@ -27,6 +27,11 @@ public class Autor {
 	public String toString() {
 		return "Autor: " + this.nome + " email: " + this.email + " descrição: "+  this.descricao;
 	}
+	
+	@Deprecated
+	public Autor() {
+		
+	}
 
 	public Autor(String nome, String email, String descricao) {
 		this.nome = nome;
