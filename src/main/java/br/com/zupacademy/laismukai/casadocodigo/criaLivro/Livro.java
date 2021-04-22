@@ -61,7 +61,38 @@ public class Livro {
 	@Deprecated
 	public Livro() {
 	}
-	
+
+	public String getResumo() {
+		return resumo;
+	}
+
+	public String getSumario() {
+		return sumario;
+	}
+
+	public BigDecimal getPreco() {
+		return preco;
+	}
+
+	public Integer getNumeroPaginas() {
+		return numeroPaginas;
+	}
+
+	public String getIsbn() {
+		return isbn;
+	}
+
+	public LocalDate getDataPublicacao() {
+		return dataPublicacao;
+	}
+
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public Autor getAutor() {
+		return autor;
+	}
 
 	public Long getId() {
 		return id;
@@ -87,6 +118,8 @@ public class Livro {
 		this.categoria = categoria;
 		this.autor = autor;
 	}
+
+
 
 	@Override
 	public String toString() {

@@ -57,19 +57,16 @@ public class LivroRequest {
 	public LivroRequest() {
 	}
 
-	public LivroRequest(@NotBlank String titulo, @NotBlank @Size(max = 500) String resumo, String sumario,
-			@NotBlank @Min(20) BigDecimal preco, @NotBlank @Min(100) Integer numeroPaginas, @NotBlank String isbn,
-			@NotBlank LocalDate dataPublicacao, @NotBlank String nomeCategoria, @NotBlank String nomeAutor) {
-		super();
-		this.titulo = titulo;
-		this.resumo = resumo;
-		this.sumario = sumario;
-		this.preco = preco;
-		this.numeroPaginas = numeroPaginas;
-		this.isbn = isbn;
-		this.dataPublicacao = dataPublicacao;
-		this.nomeCategoria = nomeCategoria;
-		this.nomeAutor = nomeAutor;
+	public LivroRequest(Livro livro){
+		this.titulo = livro.getTitulo();
+		this.resumo = livro.getResumo();
+		this.sumario = livro.getSumario();
+		this.preco = livro.getPreco();
+		this.numeroPaginas = livro.getNumeroPaginas();
+		this.isbn = livro.getIsbn();
+		this.dataPublicacao = livro.getDataPublicacao();
+		this.nomeCategoria = livro.getCategoria().getNome();
+		this.nomeAutor = livro.getAutor().getNome();
 	}
 
 	public String getTitulo() {

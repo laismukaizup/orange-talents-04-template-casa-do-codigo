@@ -6,17 +6,15 @@ import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import br.com.zupacademy.laismukai.casadocodigo.criaAutor.AutorRepository;
 import br.com.zupacademy.laismukai.casadocodigo.criaCategoria.CategoriaRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/livro")
@@ -31,13 +29,20 @@ public class LivroController {
 	
 	@PersistenceContext
 	EntityManager manager;
+
+	@GetMapping("{id}")
+	public ResponseEntity<LivroRequest> detalhar(@PathVariable Long id){
+		Optional<Livro> livro = livroRepository.findById(id);
+		if(livro.isPresent())
+			return ResponseEntity.ok((new LivroRequest(livro.get())));
+		return ResponseEntity.notFound().build();
+	}
 	
 	@GetMapping
 	public List<ItemListaLivro> listar(){
 		List<ItemListaLivro> lista = new ArrayList<>();
 		return ItemListaLivro.converter( livroRepository.findAll());
 	}
-	
 
 	@PostMapping
 	@Transactional
