@@ -1,7 +1,5 @@
 package br.com.zupacademy.laismukai.casadocodigo.criaLivro;
 
-import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
@@ -17,6 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.zupacademy.laismukai.casadocodigo.criaAutor.AutorRepository;
 import br.com.zupacademy.laismukai.casadocodigo.criaCategoria.CategoriaRepository;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RestController
 @RequestMapping("/livro")
 public class LivroController {
@@ -25,9 +26,18 @@ public class LivroController {
 	CategoriaRepository categoriaRepository;
 	@Autowired
 	AutorRepository autorRepository;
+	@Autowired
+	LivroRepository livroRepository;
 	
 	@PersistenceContext
 	EntityManager manager;
+	
+	@GetMapping
+	public List<ItemListaLivro> listar(){
+		List<ItemListaLivro> lista = new ArrayList<>();
+		return ItemListaLivro.converter( livroRepository.findAll());
+	}
+	
 
 	@PostMapping
 	@Transactional

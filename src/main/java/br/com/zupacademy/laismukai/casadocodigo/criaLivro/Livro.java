@@ -61,6 +61,17 @@ public class Livro {
 	@Deprecated
 	public Livro() {
 	}
+	
+
+	public Long getId() {
+		return id;
+	}
+
+
+	public String getTitulo() {
+		return titulo;
+	}
+
 
 	public Livro(@NotBlank String titulo, @NotBlank @Size(max = 500) String resumo, String sumario,
 			@NotBlank @Min(20) BigDecimal preco, @NotBlank @Min(100) Integer numeroPaginas, @NotBlank String isbn,
@@ -81,5 +92,7 @@ public class Livro {
 	public String toString() {
 		return "Livro: " + titulo + " criado com sucesso";
 	}
+	
+	
 
 }
