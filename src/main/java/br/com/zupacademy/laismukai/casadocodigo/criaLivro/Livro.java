@@ -1,0 +1,79 @@
+package br.com.zupacademy.laismukai.casadocodigo.criaLivro;
+
+import java.math.BigDecimal;
+import java.time.LocalDate;
+
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import br.com.zupacademy.laismukai.casadocodigo.criaAutor.Autor;
+import br.com.zupacademy.laismukai.casadocodigo.criaCategoria.Categoria;
+
+@Entity
+public class Livro {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	@NotBlank
+	private String titulo;
+	@NotBlank
+	@Size(max = 500)
+	private String resumo;
+	@Lob
+	@Basic(fetch = FetchType.LAZY)
+	@Column(name = "sumario")
+	private String sumario;
+	@DecimalMin("20.00")
+	private BigDecimal preco;
+	@Min(100)
+	private Integer numeroPaginas;
+	@NotBlank
+	private String isbn;
+	@JsonFormat(pattern = "dd/MM/yyyy")
+	private LocalDate dataPublicacao;
+	@ManyToOne
+	private Categoria categoria;
+	@ManyToOne
+	private Autor autor;
+
+	@Deprecated
+	public Livro() {
+	}
+
+	public Livro(@NotBlank String titulo, @NotBlank @Size(max = 500) String resumo, String sumario,
+			@NotBlank @Min(20) BigDecimal preco, @NotBlank @Min(100) Integer numeroPaginas, @NotBlank String isbn,
+			@NotBlank LocalDate dataPublicacao, @NotBlank Categoria categoria, @NotBlank Autor autor) {
+		super();
+		this.titulo = titulo;
+		this.resumo = resumo;
+		this.sumario = sumario;
+		this.preco = preco;
+		this.numeroPaginas = numeroPaginas;
+		this.isbn = isbn;
+		this.dataPublicacao = dataPublicacao;
+		this.categoria = categoria;
+		this.autor = autor;
+	}
+
+	@Override
+	public String toString() {
+		return "Livro: " + titulo + " criado com sucesso";
+	}
+
+}
