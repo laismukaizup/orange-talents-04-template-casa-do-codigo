@@ -30,9 +30,4 @@ public class ValidationErrorHandler {
 		});
 		return dto;
 	}
-
-	@ResponseStatus(code = HttpStatus.BAD_REQUEST,reason = "Some parameters are invalid")
-	@ExceptionHandler(IllegalArgumentException.class)
-	public void handle(IllegalArgumentException exception) {
-	}
 }

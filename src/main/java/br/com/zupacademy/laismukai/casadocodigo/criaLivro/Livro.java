@@ -13,13 +13,13 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Future;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.sun.istack.NotNull;
 
 import br.com.zupacademy.laismukai.casadocodigo.criaAutor.Autor;
 import br.com.zupacademy.laismukai.casadocodigo.criaCategoria.Categoria;
@@ -39,16 +39,22 @@ public class Livro {
 	@Basic(fetch = FetchType.LAZY)
 	@Column(name = "sumario")
 	private String sumario;
+	@NotNull
 	@DecimalMin("20.00")
 	private BigDecimal preco;
+	@NotNull
 	@Min(100)
 	private Integer numeroPaginas;
 	@NotBlank
 	private String isbn;
+	@NotNull
+	@Future
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate dataPublicacao;
+	@NotNull
 	@ManyToOne
 	private Categoria categoria;
+	@NotNull
 	@ManyToOne
 	private Autor autor;
 

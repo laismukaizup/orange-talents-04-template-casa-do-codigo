@@ -9,12 +9,15 @@ import javax.persistence.Column;
 import javax.persistence.FetchType;
 import javax.persistence.Lob;
 import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Future;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.sun.istack.NotNull;
 
+import br.com.zupacademy.laismukai.casadocodigo.ExistValue;
 import br.com.zupacademy.laismukai.casadocodigo.UniqueValue;
 import br.com.zupacademy.laismukai.casadocodigo.criaAutor.Autor;
 import br.com.zupacademy.laismukai.casadocodigo.criaAutor.AutorRepository;
@@ -32,6 +35,7 @@ public class LivroRequest {
 	@Basic(fetch = FetchType.LAZY)
 	@Column(name = "sumario")
 	private String sumario;
+	@NotNull
 	@DecimalMin("20.00")
 	private BigDecimal preco;
 	@Min(100)
@@ -39,11 +43,14 @@ public class LivroRequest {
 	@NotBlank
 	@UniqueValue(domainClass = Livro.class, fieldName = "isbn", message = "ISBN já cadastrado")
 	private String isbn;
+	@Future
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate dataPublicacao;
 	@NotBlank
+	@ExistValue(domainClass = Categoria.class, fieldName = "nome", message = "Categoria não existe no banco")
 	private String nomeCategoria;
 	@NotBlank
+	@ExistValue(domainClass = Autor.class, fieldName = "nome", message = "Autor não existe no banco")
 	private String nomeAutor;
 
 	@Deprecated
@@ -105,9 +112,11 @@ public class LivroRequest {
 
 		Optional<Categoria> categoria = categoriaRepository.findByNome(nomeCategoria);
 		Optional<Autor> autor = autorRepository.findByNome(nomeAutor);
+		
 		if (categoria.isPresent() && autor.isPresent())
 			return new Livro(titulo, resumo, sumario, preco, numeroPaginas, isbn, dataPublicacao, categoria.get(),
 					autor.get());
+		
 		return null;
 	}
 
