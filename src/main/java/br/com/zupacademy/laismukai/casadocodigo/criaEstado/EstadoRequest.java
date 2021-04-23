@@ -5,11 +5,13 @@ import br.com.zupacademy.laismukai.casadocodigo.criaPais.Pais;
 import br.com.zupacademy.laismukai.casadocodigo.criaPais.PaisRepository;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.Optional;
 
 public class EstadoRequest {
     @NotBlank
     private String nome;
+    @NotNull
     private Long idPais;
 
     @Deprecated
