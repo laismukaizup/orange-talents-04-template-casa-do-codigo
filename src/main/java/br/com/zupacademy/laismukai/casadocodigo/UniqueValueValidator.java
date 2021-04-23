@@ -26,7 +26,6 @@ public class UniqueValueValidator implements ConstraintValidator<UniqueValue, Ob
 
 	@Override
 	public boolean isValid(Object value, ConstraintValidatorContext context) {
-		//select 1 from Estado e where e.pais.id = pais
 		Query query = manager.createQuery("select 1 from " + klass.getName() + " a where a." + domainAttribute + "=:value");
 		query.setParameter("value", value);
 		List<?> list = query.getResultList();
