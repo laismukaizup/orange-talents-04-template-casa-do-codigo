@@ -15,6 +15,14 @@ public class Estado {
     @ManyToOne
     private Pais pais;
 
+    @Deprecated
+    public Estado() {
+    }
+
+    public Pais getPais() {
+        return pais;
+    }
+
     public Estado(String nome, Pais pais) {
         this.nome = nome;
         this.pais = pais;

@@ -10,7 +10,6 @@ import java.util.Optional;
 public class EstadoRequest {
     @NotBlank
     private String nome;
-    @UniqueValue(domainClass = Estado.class, fieldName = "pais.id", message = "País não existe no banco de dados")
     private Long idPais;
 
     @Deprecated

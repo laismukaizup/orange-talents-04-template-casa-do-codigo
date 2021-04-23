@@ -17,6 +17,10 @@ public class Pais {
         this.nome = nome;
     }
 
+    public String getNome() {
+        return nome;
+    }
+
     @Deprecated
     public Pais() {
     }
