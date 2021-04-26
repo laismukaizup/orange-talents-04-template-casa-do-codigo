@@ -1,6 +1,5 @@
 package br.com.zupacademy.laismukai.casadocodigo.criaEstado;
 
-import br.com.zupacademy.laismukai.casadocodigo.ProibeEstadoDuplicadoEmPaisValidator;
 import br.com.zupacademy.laismukai.casadocodigo.criaPais.PaisRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.WebDataBinder;
@@ -11,6 +10,7 @@ import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 
+
 @RestController
 @RequestMapping("/estado")
 public class EstadoController {
@@ -20,8 +20,8 @@ public class EstadoController {
     @Autowired
     PaisRepository paisRepository;
 
-    @Autowired
-    ProibeEstadoDuplicadoEmPaisValidator proibeEstadoDuplicadoEmPaisValidator;
+  @Autowired
+  ProibeEstadoDuplicadoEmPaisValidator proibeEstadoDuplicadoEmPaisValidator;
 
     @InitBinder
     public void init(WebDataBinder binder){
